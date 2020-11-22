@@ -21,7 +21,7 @@
          <graphic>
             <ImageView fitHeight="212.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Desktop/button1.png" />
+                  <Image url="@button1.png" />
                </image>
                <effect>
                   <Glow />
@@ -34,13 +34,16 @@
       </Button>
       <ImageView fitHeight="177.0" fitWidth="271.0" layoutX="103.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Desktop/name.png" />
+            <Image url="@name.png" />
          </image>
       </ImageView>
       <Button layoutX="137.0" layoutY="478.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="207.0" style="-fx-background-color: #292929;" text="Resume" textAlignment="CENTER" textFill="#e10808" textOverrun="CENTER_ELLIPSIS" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="134.0">
          <font>
             <Font name="Broadway" size="32.0" />
          </font>
+         <effect>
+            <Glow level="0.75" />
+         </effect>
       </Button>
    </children>
 </AnchorPane>
