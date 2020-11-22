@@ -8,8 +8,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import Gameplay.MenuController?>
 
-<AnchorPane id="AnchorPane" prefHeight="570.0" prefWidth="442.0" style="-fx-background-color: #292929;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller=".MenuController">
+
+
+<AnchorPane id="AnchorPane" prefHeight="570.0" prefWidth="442.0" style="-fx-background-color: #292929;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gameplay.MenuController">
     <stylesheets>
         <URL value="@menu.css" />
     </stylesheets>
