@@ -1,3 +1,4 @@
+package Gameplay;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author HP
  */
-public class GameFinishedController implements Initializable {
+public class LoadSavedGamePageController implements Initializable {
 
     /**
      * Initializes the controller class.
