@@ -6,21 +6,29 @@ import javafx.scene.image.Image;
 
 class ColorBall 
 {
-	private int colorTogive; //The color it will chose, random number
-	private Image colorBall_image; //The image of the colorball
+	private Shape ColorBall;
 	
 	
-	ColorBall()
+	ColorBall(int height)
 	{
+		String ShapeName = "Circle";
+		
 		Random random = new Random();
-		this.colorTogive = random.nextInt(4);
-		System.out.print(colorTogive);
-		this.colorBall_image = new Image("/yellow.png", 20, 20, false, false);
+		int ColorToChange = random.nextInt(4);
+		
+		System.out.print(ColorToChange);
+		
+		Image ColorBallImage = new Image("/redc.png", 20, 20, false, false);
+		Point ColorBallCentre = new Point(500, height);
+		
+		this.ColorBall = new Shape(ShapeName, ColorBallCentre, ColorToChange, ColorBallImage);
+//		this.colorBall_image = new Image("/yellow.png", 20, 20, false, false);
+		
 	}
 	
-	Image getColorBallImage()
+	Shape getColorBall()
 	{
-		return this.colorBall_image;
+		return this.ColorBall;
 	}
 
 }

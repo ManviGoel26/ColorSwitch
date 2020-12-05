@@ -49,7 +49,7 @@ public class GameCanvas extends Application {
 				else if (i / 10 == 3 || i / 10 == 7)
 					manyEarths.add(new Image("/greenc.png", 20, 20, false, false));
 			}
-		}
+		} 
 
 		ArrayList<Image> manycircs = new ArrayList<Image>();
 		for (int i = 0; i < 16; i++) {
@@ -88,13 +88,13 @@ public class GameCanvas extends Application {
 
 		
 //		The user from user class, empty constructor.
-		User user = new User(); 
+		User user = new User("Circle"); 
 //		Image user = new Image("/redc.png", 15, 15, false, false);
 
 		
 		
 //		The colorBall from ColorBall class
-		ColorBall b1 = new ColorBall();
+		ColorBall b1 = new ColorBall(0);
 		Image space = new Image("/space.png", 1000, 1000, false, false);
 		Image revsign = new Image("/rev.png", 50, 50, false, false);
 		Image psign = new Image("/favicon-32x32.png", 50, 50, false, false);
@@ -137,7 +137,7 @@ public class GameCanvas extends Application {
 				gc.drawImage(star, 500, 530 + 20 * t);
 				gc.drawImage(star, 500, 50 + 20 * t);
 				gc.drawImage(star, 480, 380 + 20 * t);
-				gc.drawImage(b1.getColorBallImage(), 500, 20*t);
+				gc.drawImage(b1.getColorBall().getShapeImage(), 500, 20*t);
 
 
 				// gc.drawImage( earth, x3, y3 );
@@ -161,7 +161,6 @@ public class GameCanvas extends Application {
 				gc.drawImage(redbar, x, yb + 80);
 				gc.drawImage(greenbar, x2 + 200, yb + 120);
 				
-//				Adding the colorball;
 				
 				gc.drawImage(redbar, x, yb - 800);
 				gc.drawImage(greenbar, x2 + 200, yb + 40 - 800);
@@ -169,8 +168,9 @@ public class GameCanvas extends Application {
 				gc.drawImage(yellowbar, x2 + 200, yb + 120 - 800);
 				gc.drawImage(star, 500, yb - 650);
 
-				gc.drawImage(user.getUserImage(), 500, 640);
-//				user.changeColor(3);
+//				Displaying the user on Game Canvas.
+				gc.drawImage(user.getUserShape().getShapeImage(), user.getUserShape().getShapeCentre().getXCoordinate(), user.getUserShape().getShapeCentre().getYCoordinate());
+				user.changeColor(3);
 
 				EventHandler<MouseEvent> handler = new EventHandler<>() {
 					@Override
