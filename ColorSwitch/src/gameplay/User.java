@@ -1,57 +1,87 @@
 package gameplay;
 
-import java.util.ArrayList;
 import java.util.Random;
+import javafx.geometry.Point2D;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.layout.Pane;
 
-import javafx.scene.image.Image;
 
-class User 
+class User extends Pane
 {
-	private Shape MyShape;
-	private final ArrayList<String> color_images; //Can make a singelton class for this
-//	Add further parameters when helper classes are ready.
+	public Point2D centre;
+	public static Rectangle rectangle;
 	
-	User(String shape_name)
-	{		
-		//Making an array for colors
-		color_images = new ArrayList<String>();
-		color_images.add("/redc.png");
-		color_images.add("/greenc.png");
-		color_images.add("/yellow.png");
-		color_images.add("/bluec.png");
-		//New colors cannot be added in middle of game
-		// make a separate class for this array
-		
-		
-		
+	public User(){
+		rectangle=new Rectangle(20,20,Color.RED);
+		centre=new Point2D(0, 0);
 		
 		Random random = new Random();
 		int UserColor = random.nextInt(4);
-		Point UserCentre = new Point(500, 640);
-		Image UserImage = new Image(color_images.get(UserColor), 15, 15, false, false);
 		
-		this.MyShape = new Shape(shape_name, UserCentre, UserColor, UserImage);
-				
+		int centreX=300;//500;
+		int centreY=300;//640;
+		
+		centre = new Point2D(centreX, centreY);
+		
+		setTranslateY(centreY);
+		setTranslateX(centreX);
+		getChildren().addAll(rectangle);
 	}
 	
-	
-//	Getter function
-	Shape getUserShape()
-	{
-		return this.MyShape;
+	public void moveY(int value) {
+		//System.out.println("moveY");
+		boolean moveDown = value>0 ? true: false;
+		
+		for(int i=0;i<Math.abs(value);i++) {
+			
+//			for(Obstacle ob: po.obs) {
+//				if(this.getBoundsInParent().intersects(ob.getBoundsInParent())) {
+//					if(moveDown) {
+//						setTranslateY(getTranslateY()-1);
+//						return;
+//					}
+//					else {
+//						setTranslateY(getTranslateY()+1);
+//						return;
+//					}
+//				}
+//			}
+			if(getTranslateY()<0)
+				setTranslateY(0);
+			
+			if(getTranslateY()>580) {
+				setTranslateY(580);
+			}
+			setTranslateY(getTranslateY()+ (moveDown? 1:-1));
+			
+		}
 	}
-	
-	
-//	Required functions
+	public void jump() {
+		centre=new Point2D(3,  -15);
+		System.out.println("jumped");
+		
+	}
 	void changeColor(int newColor)
 	{
-		Image newImage = new Image(color_images.get(newColor), 15, 15, false, false); 
+		//Image newImage = new Image(color_images.get(newColor), 15, 15, false, false); 
+		switch(newColor) {
+		case 1:
+			rectangle.setFill(Color.RED);
+			break;
+		case 2:
+			rectangle.setFill(Color.BLUE);
+			break;
+		case 3:
+			rectangle.setFill(Color.GREEN);
+			break;
+		case 4:
+			rectangle.setFill(Color.YELLOW);
+			break;
+			
+		}
 		
-		this.MyShape.setShapeColor(newColor);
-		this.MyShape.setShapeImage(newImage);
 	}
-	
-	
-	
 
 }
+
