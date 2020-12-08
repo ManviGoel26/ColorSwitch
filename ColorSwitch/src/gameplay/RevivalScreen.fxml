@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="330.0" style="-fx-background-color: #f89c1b;" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gameplay.RevivalScreenController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcd1e" height="15.0" layoutY="180.0" stroke="#ffcd1e" strokeType="INSIDE" width="300.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcd1e" height="200.0" layoutY="-1.0" stroke="#ffcd1e" strokeType="INSIDE" width="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcd1e" height="200.0" layoutX="285.0" stroke="#ffcd1e" strokeType="INSIDE" width="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcd1e" height="15.0" layoutX="10.0" layoutY="10.0" stroke="#ffcd1e" strokeType="INSIDE" width="300.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" width="330.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" layoutX="-5.0" layoutY="209.0" stroke="BLACK" strokeType="INSIDE" width="330.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="230.0" layoutX="309.0" stroke="BLACK" strokeType="INSIDE" width="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Circle fill="#ffcd1e" layoutX="305.0" layoutY="25.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="230.0" layoutX="3.0" stroke="BLACK" strokeType="INSIDE" width="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="CloseButton" layoutX="282.0" layoutY="-5.0" maxHeight="52.0" maxWidth="57.0" mnemonicParsing="false" onAction="#GoToGameFinishedScreen" prefHeight="52.0" prefWidth="57.0" style="-fx-background-radius: 5em; -fx-min-height: 40px; -fx-min-width: 40px; -fx-max-height: 50px; -fx-max-width: 50px; -fx-background-color: #f89c1c;" text="Button" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images_/cross.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Text fill="WHITE" layoutX="46.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONTINUE?">
+         <font>
+            <Font name="Book Antiqua" size="40.0" />
+         </font>
+      </Text>
+      <Button layoutX="29.0" layoutY="115.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="272.0" style="-fx-background-color: #EB6315;" text="100" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua" size="30.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="77.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images_/star.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Circle fill="#ffcd1e" layoutX="165.0" layoutY="208.0" radius="25.0" stroke="#ffcd1e" strokeType="INSIDE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0" />
+      <Circle fill="#f89c1b" layoutX="165.0" layoutY="205.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="timeRemaining" layoutX="157.0" layoutY="186.0" text="1" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua" size="30.0" />
+         </font>
+      </Label>
+   </children>
+</fx:root>

@@ -1,11 +1,11 @@
-package burj;
+//dfwspackage burj;
 
 /*okay, so- Following is a crappy looking piece of code which contains just one obstacle and does bare minimum obstacle handling. 
  * Press the mouse to make that user (currently rectangle) to jump and as soon as it collides with the obstacle, a screen is popped 
  * up which (currently) contains an ugly button but the user gets frozen on screen after collision 
  * Will add comments, more obstacles etc. in the morning. Meanwhile you try to run this code and see. Also, if you find time, 
  * please replace the popped up screen */
-
+package gameplay
 
 import java.util.ArrayList;
 import java.util.Random;
