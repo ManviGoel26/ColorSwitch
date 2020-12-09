@@ -10,19 +10,19 @@ import javafx.scene.layout.Pane;
 class User extends Pane
 {
 	public Point2D centre;
-	public static Rectangle rectangle;
+	public static Rectangle rectangle;//We can add different shapes of user as bonus, maybe?
 	
 	public User(){
-		rectangle=new Rectangle(20,20,Color.RED);
-		centre=new Point2D(0, 0);
+		this.rectangle = new Rectangle(20,20,Color.RED);//It should be random I think.
+		this.centre = new Point2D(0, 0);
 		
 		Random random = new Random();
 		int UserColor = random.nextInt(4);
 		
-		int centreX=300;//500;
-		int centreY=300;//640;
+		int centreX = 300;//500;
+		int centreY = 300;//640;
 		
-		centre = new Point2D(centreX, centreY);
+		this.centre = new Point2D(centreX, centreY);
 		
 		setTranslateY(centreY);
 		setTranslateX(centreX);
@@ -48,24 +48,30 @@ class User extends Pane
 //				}
 //			}
 			if(getTranslateY()<0)
+			{
 				setTranslateY(0);
+			}
 			
-			if(getTranslateY()>580) {
+			if(getTranslateY() > 580)
+			{
 				setTranslateY(580);
 			}
 			setTranslateY(getTranslateY()+ (moveDown? 1:-1));
 			
 		}
 	}
-	public void jump() {
+	public void jump() 
+	{
 		centre=new Point2D(3,  -15);
 		System.out.println("jumped");
 		
 	}
+	
 	void changeColor(int newColor)
 	{
 		//Image newImage = new Image(color_images.get(newColor), 15, 15, false, false); 
-		switch(newColor) {
+		switch(newColor)
+		{
 		case 1:
 			rectangle.setFill(Color.RED);
 			break;
