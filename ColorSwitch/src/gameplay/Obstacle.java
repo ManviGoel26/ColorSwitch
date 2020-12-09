@@ -1,4 +1,4 @@
-package burj;
+package gameplay;
 
 import java.util.ArrayList;
 

@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="330.0" style="-fx-background-color: #f89c1b;" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gameplay.RevivalScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="330.0" style="-fx-background-color: #f89c1b;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gameplay.RevivalScreenController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcd1e" height="15.0" layoutY="180.0" stroke="#ffcd1e" strokeType="INSIDE" width="300.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcd1e" height="200.0" layoutY="-1.0" stroke="#ffcd1e" strokeType="INSIDE" width="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
@@ -54,4 +54,4 @@
          </font>
       </Label>
    </children>
-</fx:root>
+</AnchorPane>
