@@ -4,7 +4,11 @@ package gameplay;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+//import java.util.Timer;
+import java.util.TimerTask;
 
+import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,19 +22,21 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-//closeButton-GoToGameFinishedScreen
-//time remaining
 public class RevivalScreenController extends VBox implements Initializable
 {
-    @FXML private Label timeRemaining;
-    @FXML private Button CloseButton;
+    @FXML
+    public Label timeRemaining;
+    
+    @FXML
+    private Button CloseButton;
+    
     private int startTime = 5;
     
 
     
     public void GoToGameFinishedScreen(ActionEvent event) throws Exception
     {
-//    	Add the call after adding the new program;
+//    	Calls the Game finished page;
     	try
     	{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameFinishedScreen.fxml"));
@@ -38,17 +44,44 @@ public class RevivalScreenController extends VBox implements Initializable
             Stage stage = new Stage();
             stage.setScene(new Scene(root2));  
             stage.show();
+//            Platform.exit();
         } 
+    	
     	catch(Exception e) 
     	{
             e.printStackTrace();
         }
     	
     }
+    
+//    public void setTimer() {
+//        Timer timer = new Timer();
+////        Platform.setImplicitExit(false);
+//        timer.scheduleAtFixedRate(new TimerTask() {
+//            public void run() {
+//                if(startTime > 0)
+//                {
+//                    Platform.runLater(new Runnable() {
+//                    	@Override public void run()
+//                    	{
+//                    		timeRemaining.setText(" " + startTime);
+//                    		System.out.println(startTime);
+//                            startTime--;
+//                    	}
+//                    });
+//                }
+//                else
+//                {
+//                    timer.cancel();
+//                }
+//                	
+//            }
+//        }, 1000,1000);
+//    }
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+	public void initialize(URL arg0, ResourceBundle arg1) 
+	{
 		
 	}
 

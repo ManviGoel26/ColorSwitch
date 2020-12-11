@@ -1,3 +1,4 @@
+
 package gameplay;
 
 
@@ -20,14 +21,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class GameFinishedScreenController extends VBox implements Initializable
+public class LoadSavedGamePageController extends VBox implements Initializable
 {
-    @FXML private Label UserScore;
-    @FXML private Label HighScore;
-    @FXML private Button GoToMainMenuButton;
-    @FXML private Button Replay;
-    @FXML private Label TotalStars;
-
+    @FXML private Button GoToMenuButton;
+    @FXML private Button Play;
+    
     
     public void GoToMenuScreen(ActionEvent event) throws Exception
     {

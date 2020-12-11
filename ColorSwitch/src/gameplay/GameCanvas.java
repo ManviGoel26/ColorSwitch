@@ -91,41 +91,41 @@ public class GameCanvas extends Application
     public void start(Stage primaryStage) throws Exception 
 	{
         
-	primaryStage.setTitle("I feel like crying");
-	Group root = new Group();
-	Scene scene = new Scene(root, 600, 600);
+		primaryStage.setTitle("I feel like crying");
+		Group root = new Group();
+		Scene scene = new Scene(root, 600, 600);
 	
-	myObstacles = new Obstacle();
-	myObstacles.setTranslations(root);
+		myObstacles = new Obstacle();
+		myObstacles.setTranslations(root);
 	
-	root.getChildren().add(usr);
-	
-	
-	scene.setOnMouseClicked(event->{
-		usr.jump();
-	    System.out.println("clicked");
-	});
-	
-	primaryStage.setScene(scene);
-	primaryStage.show();
+		root.getChildren().add(usr);
 	
 	
-	AnimationTimer timer = new AnimationTimer() 
-	{
-		@Override
-		public void handle(long arg0)
+		scene.setOnMouseClicked(event->{
+			usr.jump();
+			System.out.println("clicked");
+		});
+	
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	
+	
+		AnimationTimer timer = new AnimationTimer() 
 		{
-			if(checkShapeIntersection() == 1) 
+			@Override
+			public void handle(long arg0)
 			{
-				//blankScreen();
-				stop();
-			}
+				if(checkShapeIntersection() == 1) 
+				{
+					//blankScreen();
+					stop();
+				}
 			
-			update();
-		}
-	};
+				update();
+			}
+		};
 	
-	timer.start();
+		timer.start();
 	}
 	
 //	private void showStage() 
@@ -144,16 +144,18 @@ public class GameCanvas extends Application
 	{
 		Stage popUpWindow = new Stage();
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RevivalScreen.fxml"));
+		RevivalScreenController rv = new RevivalScreenController();
 
 
         try 
         {
             Parent root1 = (Parent) fxmlLoader.load();
 
-    		popUpWindow.initModality(Modality.APPLICATION_MODAL);
+    		popUpWindow.initModality(Modality.APPLICATION_MODAL );
 //    	    popUpWindow.initStyle(StageStyle.UNDECORATED); //To remove the upper border of class.
     	    popUpWindow.setTitle("PopUpWindow");
-    	    popUpWindow.setScene(new Scene(root1));  
+    	    popUpWindow.setScene(new Scene(root1)); 
+//    	    rv.setTimer();
     	    popUpWindow.show();
         }
         catch (IOException exception) 
