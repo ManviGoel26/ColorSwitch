@@ -1,3 +1,4 @@
+
 package gameplay;
 
 
@@ -20,21 +21,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class GameFinishedScreenController extends VBox implements Initializable
+public class MenuController extends VBox implements Initializable
 {
-    @FXML private Label UserScore;
-    @FXML private Label HighScore;
-    @FXML private Button GoToMainMenuButton;
-    @FXML private Button Replay;
-    @FXML private Label TotalStars;
-
+    @FXML private Button GoToLoadSavedGamesScreenButton;
+    @FXML private Button Play;
     
-    public void GoToMenuScreen(ActionEvent event) throws Exception
+    
+    public void GoToLoadSavedGamesScreen(ActionEvent event) throws Exception
     {
 //    	Calls the Game finished page;
     	try
     	{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoadSavedGamePage.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));  
