@@ -10,68 +10,64 @@ import javafx.scene.layout.Pane;
 class User extends Pane
 {
 	public Point2D centre;
-	public static Rectangle rectangle;//We can add different shapes of user as bonus, maybe?
+	public static Rectangle rectangle;
+	int score;
 	
 	public User(){
-		this.rectangle = new Rectangle(20,20,Color.RED);//It should be random I think.
-		this.centre = new Point2D(0, 0);
+		score=0;
+		centre=new Point2D(0, 0);
 		
 		Random random = new Random();
 		int UserColor = random.nextInt(4);
+		if(UserColor==1) 
+			rectangle=new Rectangle(20,20,Color.RED);
+		if(UserColor==2) 
+			rectangle=new Rectangle(20,20,Color.BLUE);
+		if(UserColor==3) 
+			rectangle=new Rectangle(20,20,Color.GREEN);
+		if(UserColor==4) 
+			rectangle=new Rectangle(20,20,Color.YELLOW);
 		
-		int centreX = 300;//500;
-		int centreY = 300;//640;
 		
-		this.centre = new Point2D(centreX, centreY);
+		int centreX=300;//500;
+		int centreY=300;//640;
+		
+		centre = new Point2D(centreX, centreY);
 		
 		setTranslateY(centreY);
 		setTranslateX(centreX);
 		getChildren().addAll(rectangle);
 	}
 	
-	public void moveY(int value) {
-		//System.out.println("moveY");
-		boolean moveDown = value>0 ? true: false;
+	public void moveY(int value, Obstacle myObstacles) {
 		
+		boolean moveDown = value>0 ? true: false;
+		if(getTranslateY()<240) {
+			myObstacles.update();
+		}
 		for(int i=0;i<Math.abs(value);i++) {
 			
-//			for(Obstacle ob: po.obs) {
-//				if(this.getBoundsInParent().intersects(ob.getBoundsInParent())) {
-//					if(moveDown) {
-//						setTranslateY(getTranslateY()-1);
-//						return;
-//					}
-//					else {
-//						setTranslateY(getTranslateY()+1);
-//						return;
-//					}
-//				}
-//			}
-			if(getTranslateY()<0)
-			{
+			if(getTranslateY()<0) {
 				setTranslateY(0);
 			}
 			
-			if(getTranslateY() > 580)
-			{
+			if(getTranslateY()>580) {
 				setTranslateY(580);
+				
 			}
 			setTranslateY(getTranslateY()+ (moveDown? 1:-1));
 			
 		}
 	}
-	public void jump() 
-	{
+	public void jump() {
 		centre=new Point2D(3,  -15);
-		System.out.println("jumped");
-		
+		score++;
+		//System.out.println("jumped");
 	}
 	
 	void changeColor(int newColor)
 	{
-		//Image newImage = new Image(color_images.get(newColor), 15, 15, false, false); 
-		switch(newColor)
-		{
+		switch(newColor) {
 		case 1:
 			rectangle.setFill(Color.RED);
 			break;
