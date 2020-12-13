@@ -30,20 +30,24 @@ public class MenuController extends VBox implements Initializable
     public void GoToLoadSavedGamesScreen(ActionEvent event) throws Exception
     {
 //    	Calls the Game finished page;
+    	FXMLLoader LGPageLoader = new FXMLLoader(getClass().getResource("LoadSavedGamePage.fxml"));
+        Parent LGPane = LGPageLoader.load();
+        Scene LGScene = new Scene(LGPane, 400, 600);
+        
+        
     	try
     	{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoadSavedGamePage.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));  
-            stage.show();
-//            Platform.exit();
+    		
+    		Stage stage = (Stage) GoToLoadSavedGamesScreenButton.getScene().getWindow();
+    		stage.setScene(LGScene);
+
         } 
     	
     	catch(Exception e) 
     	{
             e.printStackTrace();
         }
+
     	
     }
 
