@@ -144,7 +144,8 @@ public class GameCanvas extends Application
 	{
 		Stage popUpWindow = new Stage();
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RevivalScreen.fxml"));
-		RevivalScreenController rv = new RevivalScreenController();
+		RevivalScreenController rv = new RevivalScreenController(scoreLabel);
+		rv.setGameCanvas(scoreLabel);
 
 
         try 
@@ -156,6 +157,7 @@ public class GameCanvas extends Application
     	    popUpWindow.setTitle("PopUpWindow");
     	    popUpWindow.setScene(new Scene(root1)); 
 //    	    rv.setTimer();
+    	   
     	    popUpWindow.show();
         }
         catch (IOException exception) 

@@ -31,21 +31,25 @@ public class GameFinishedScreenController extends VBox implements Initializable
     
     public void GoToMenuScreen(ActionEvent event) throws Exception
     {
-//    	Calls the Game finished page;
+//    	Calls the Menu Page
+    	FXMLLoader MenuPageLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
+        Parent MenuPane = MenuPageLoader.load();
+        Scene MenuScene = new Scene(MenuPane, 400, 600);
+        
+        
     	try
     	{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));  
-            stage.show();
-//            Platform.exit();
+    		
+    		Stage stage = (Stage) GoToMainMenuButton.getScene().getWindow();
+    		stage.setScene(MenuScene);
+
         } 
     	
     	catch(Exception e) 
     	{
             e.printStackTrace();
         }
+
     	
     }
 

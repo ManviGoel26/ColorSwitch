@@ -32,19 +32,49 @@ public class RevivalScreenController extends VBox implements Initializable
     
     private int startTime = 5;
     
+    @FXML
+    private Label GameCanvas;
+    
+    
+    public RevivalScreenController()
+    {
+//    	this.GameCanvas = primaryStage;
+//    	this.GameCanvas.close();
+    	
+    }
+    
+    public RevivalScreenController(Label primaryStage)
+    {
+    	this.GameCanvas = primaryStage;
+    	System.out.println();
+//    	this.GameCanvas.close();
+    	
+    }
+    
+    void setGameCanvas(Label primaryStage)
+    {
+    	this.GameCanvas = primaryStage;
+    	System.out.println(this.GameCanvas.getId());
+//    	
+    }
+    
 
     
     public void GoToGameFinishedScreen(ActionEvent event) throws Exception
     {
 //    	Calls the Game finished page;
+//		System.out.println(this.GameCanvas == null);
+    	FXMLLoader GFPageLoader = new FXMLLoader(getClass().getResource("GameFinishedScreen.fxml"));
+        Parent GFPane = GFPageLoader.load();
+        Scene GFScene = new Scene(GFPane, 400, 600);
+        
+        
     	try
     	{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameFinishedScreen.fxml"));
-            Parent root2 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root2));  
-            stage.show();
-//            Platform.exit();
+    		
+    		Stage stage = (Stage) CloseButton.getScene().getWindow();
+    		stage.setScene(GFScene);
+
         } 
     	
     	catch(Exception e) 
@@ -53,6 +83,8 @@ public class RevivalScreenController extends VBox implements Initializable
         }
     	
     }
+    
+
     
 //    public void setTimer() {
 //        Timer timer = new Timer();
