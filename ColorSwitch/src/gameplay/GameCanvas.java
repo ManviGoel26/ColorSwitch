@@ -33,14 +33,11 @@ public class GameCanvas extends Application
 	private Obstacle myObstacles;
 	public static int score = 0;
 	 
-	
 	private static Pane appRoot = new Pane();
 	private static Pane gameRoot = new Pane();
-	public static ArrayList<Obstacle> obs = new ArrayList<>();
 	
 	User usr = new User();
 	public Label scoreLabel = new Label("Score: "+ score);
-	
 	
 	public static void main(String[] args)
 	{
@@ -48,23 +45,14 @@ public class GameCanvas extends Application
 		launch(args);	
 	}
 	
-	public void update() 
+	public void update(Group root) 
 	{
-		//System.out.println("update");
-		if(usr.centre.getY() < 5)
-		{
+		if(usr.centre.getY() < 5){	
 			usr.centre = usr.centre.add(0,1);
-			//System.out.println("in loop ");
 		}
 		
-		usr.moveY((int)usr.centre.getY());
+		usr.moveY((int)usr.centre.getY(), myObstacles);
 		scoreLabel.setText("Score: "+ score);
-		
-		usr.translateXProperty().addListener((obs, old, newValue)->{
-			int offset = newValue.intValue();
-			if(offset > 200)
-				gameRoot.setLayoutX(-(offset-200));
-		});
 	}
 	
 	private int checkShapeIntersection() 
@@ -103,7 +91,7 @@ public class GameCanvas extends Application
 	
 		scene.setOnMouseClicked(event->{
 			usr.jump();
-			System.out.println("clicked");
+			//System.out.println("clicked");
 		});
 	
 		primaryStage.setScene(scene);
@@ -117,35 +105,21 @@ public class GameCanvas extends Application
 			{
 				if(checkShapeIntersection() == 1) 
 				{
-					//blankScreen();
 					stop();
 				}
 			
-				update();
+				update(root);
 			}
 		};
 	
 		timer.start();
 	}
 	
-//	private void showStage() 
-//	{
-//		  Stage newStage = new Stage();
-//		  Button btn = new Button("blagb");
-//		  btn.setLayoutX(20);
-//		  btn.setLayoutY(20);
-//		  
-//		  Scene stageScene = new Scene(btn, 300, 300);
-//		  newStage.setScene(stageScene);
-//		  newStage.show();
-//	}
-	
 	private void showPopUpWindow()
 	{
 		Stage popUpWindow = new Stage();
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RevivalScreen.fxml"));
-		RevivalScreenController rv = new RevivalScreenController(scoreLabel);
-		rv.setGameCanvas(scoreLabel);
+		RevivalScreenController rv = new RevivalScreenController();
 
 
         try 
@@ -157,7 +131,6 @@ public class GameCanvas extends Application
     	    popUpWindow.setTitle("PopUpWindow");
     	    popUpWindow.setScene(new Scene(root1)); 
 //    	    rv.setTimer();
-    	   
     	    popUpWindow.show();
         }
         catch (IOException exception) 
