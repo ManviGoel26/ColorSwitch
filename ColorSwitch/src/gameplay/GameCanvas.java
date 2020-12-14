@@ -41,13 +41,15 @@ public class GameCanvas extends Application
 	
 	public static void main(String[] args)
 	{
+		
 		System.out.println("running1");
 		launch(args);	
 	}
 	
 	public void update(Group root) 
 	{
-		if(usr.centre.getY() < 5){	
+		if(usr.centre.getY() < 5)
+		{	
 			usr.centre = usr.centre.add(0,1);
 		}
 		
@@ -70,6 +72,7 @@ public class GameCanvas extends Application
 		  {
 		    return 0;
 		  }
+		  
 	}
 
 	
@@ -79,7 +82,7 @@ public class GameCanvas extends Application
     public void start(Stage primaryStage) throws Exception 
 	{
         
-		primaryStage.setTitle("I feel like crying");
+		primaryStage.setTitle("Game Canvas");
 		Group root = new Group();
 		Scene scene = new Scene(root, 600, 600);
 	
@@ -120,6 +123,7 @@ public class GameCanvas extends Application
 		Stage popUpWindow = new Stage();
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RevivalScreen.fxml"));
 		RevivalScreenController rv = new RevivalScreenController();
+		
 
 
         try 

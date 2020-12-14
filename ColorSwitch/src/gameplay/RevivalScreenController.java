@@ -33,13 +33,11 @@ public class RevivalScreenController extends VBox implements Initializable
     private int startTime = 5;
     
     @FXML
-    private Label GameCanvas;
+    private Label GameCanvas;//Need to fix
     
     
     public RevivalScreenController()
     {
-//    	this.GameCanvas = primaryStage;
-//    	this.GameCanvas.close();
     	
     }
     
