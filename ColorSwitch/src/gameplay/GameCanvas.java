@@ -1,5 +1,8 @@
 package gameplay;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 //import java.util.Scanner;
 
@@ -61,6 +64,12 @@ public class GameCanvas extends Application
 	{
 		  if (myObstacles.detectCollision()) 
 		  {
+				try {
+					serialize("whatever.txt", this.myObstacles);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
 		  	System.out.println("Yay!!!");
 //		  	showStage();
 //		  	Added the pop Up Window
@@ -141,8 +150,21 @@ public class GameCanvas extends Application
         {
             throw new RuntimeException(exception);
         }
-
-		
 		
 	}
+	
+	static void serialize(String file, Object obs) throws IOException
+	{
+		FileOutputStream fileOutputStream = new FileOutputStream(file);
+		BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
+		ObjectOutputStream objectOutputStream = new ObjectOutputStream(bufferedOutputStream);
+		
+		objectOutputStream.writeObject(obs);
+
+		objectOutputStream.close();	
+	}
+	
+	
+
 }
+

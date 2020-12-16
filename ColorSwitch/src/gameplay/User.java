@@ -129,17 +129,6 @@ class User extends Pane implements Serializable
 	}
 	
 	
-//	static void serialize(String file, User user) throws IOException
-//	{
-//		FileOutputStream fileOutputStream = new FileOutputStream(file);
-//		BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
-//		ObjectOutputStream objectOutputStream = new ObjectOutputStream(bufferedOutputStream);
-//		objectOutputStream.writeObject(user);
-//		objectOutputStream.close();	
-//	}
-	
-	
-	
 	private void writeObject(ObjectOutputStream s) throws IOException
 	{
 //		Saving score, color, center coordinates
@@ -147,10 +136,12 @@ class User extends Pane implements Serializable
 		s.writeDouble(this.centre.getX());
 		s.writeDouble(this.centre.getY());
 		s.writeChars(rectangle.getFill().toString());
+		System.out.println("something");
 	}
 	
 	private void readObject(ObjectInputStream input) throws IOException, ClassNotFoundException
 	{
+		
 		int newScore = input.readInt();
 		double new_x = input.readDouble();
 		double new_y = input.readDouble();
