@@ -1,11 +1,17 @@
 package gameplay;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
+import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -15,30 +21,38 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
-public class ObstacleSprite extends Pane
+public class ObstacleSprite extends Pane implements Serializable
 {
 	
 	public ArrayList<Shape> nodes;
 	boolean onscreen;
+	private int Shape_number; //To identify which constructor to call;
+	private int constructor_number;//To identify the number in constructor;
 	
 	public ObstacleSprite(int i, int ht)
 	{
 		switch(i) 
 		{
-			case 1: CircleSprite(ht);
+			case 1: 
+				CircleSprite(ht);
+				this.Shape_number = 0;
 				break;
 			
-			case 2: RectangleSprite(ht);
+			case 2: 
+				RectangleSprite(ht);
+				this.Shape_number = 1;
 				break;
 			
-			case 3: longCircleSprite(ht);
+			case 3: 
+				longCircleSprite(ht);
+				this.Shape_number = 3;
 				break;	
 		}
 	}
 	
 	public void longCircleSprite(int ht)
 	{
-		
+		this.constructor_number = ht;
 		nodes = new ArrayList<>();
 		int x = 0;
 		for(int i = 0; i < 8; i++) 
@@ -75,6 +89,7 @@ public class ObstacleSprite extends Pane
 	
 	public void CircleSprite(int ht)
 	{
+		this.constructor_number = ht;
 		
 		nodes = new ArrayList<>();
 		
@@ -100,6 +115,8 @@ public class ObstacleSprite extends Pane
 
 	public ObstacleSprite RectangleSprite(int lowesty )
 	{
+		this.constructor_number = lowesty;
+		
 		nodes = new ArrayList<>();
 			
 		int leftx = 50, rightx = 500,  barwidth = 150, barheight = 30;
@@ -300,8 +317,24 @@ public class ObstacleSprite extends Pane
 	private void writeObject(ObjectOutputStream output) throws IOException
 	{
 		output.writeBoolean(this.onscreen);
-		output.defaultWriteObject(); // Giving error, I'll fix it tomorrow
+		output.writeInt(this.Shape_number);
+		output.writeInt(this.constructor_number);
 	}
+	
+	private void readObject(ObjectInputStream input) throws IOException, ClassNotFoundException
+	{
+		boolean new_onscreen = input.readBoolean();
+		int shape_number = input.readInt();
+		int cons_number = input.readInt();
+		
+		ObstacleSprite newObstacleSprite = new ObstacleSprite(shape_number, cons_number);
+	}
+	
+
+	
+
+	
+	
 	
 }
 
