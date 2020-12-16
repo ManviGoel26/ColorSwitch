@@ -34,6 +34,9 @@ public class GameCanvas extends Application
 {
 	
 	private Obstacle myObstacles;
+	private Stars mystars;
+	private ColorBall myColorBalls;
+	
 	public static int score = 0;
 	 
 	private static Pane appRoot = new Pane();
@@ -56,7 +59,7 @@ public class GameCanvas extends Application
 			usr.centre = usr.centre.add(0,1);
 		}
 		
-		usr.moveY((int)usr.centre.getY(), myObstacles);
+		usr.moveY((int)usr.centre.getY(), myObstacles, myColorBalls, mystars);
 		scoreLabel.setText("Score: "+ score);
 	}
 	
@@ -96,6 +99,9 @@ public class GameCanvas extends Application
 		Scene scene = new Scene(root, 600, 600);
 	
 		myObstacles = new Obstacle();
+		myColorBalls = new ColorBall(root);
+		mystars=new Stars(root);
+		
 		myObstacles.setTranslations(root);
 	
 		root.getChildren().add(usr);
@@ -115,12 +121,19 @@ public class GameCanvas extends Application
 			@Override
 			public void handle(long arg0)
 			{
-				if(checkShapeIntersection() == 1) 
-				{
+				
+				int newCol=myColorBalls.detectCollision();
+				if(newCol>0) {
+					usr.changeColor(newCol);
+				}
+				int gainPoints=mystars.detectCollision();
+				if(gainPoints>0) usr.addPoints();
+				if(checkShapeIntersection() == 1){
 					stop();
 				}
 			
 				update(root);
+				
 			}
 		};
 	
@@ -167,4 +180,3 @@ public class GameCanvas extends Application
 	
 
 }
-
