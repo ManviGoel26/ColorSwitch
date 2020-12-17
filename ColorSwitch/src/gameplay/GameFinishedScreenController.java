@@ -35,8 +35,10 @@ public class GameFinishedScreenController extends VBox implements Initializable
     	FXMLLoader MenuPageLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
         Parent MenuPane = MenuPageLoader.load();
         Scene MenuScene = new Scene(MenuPane, 400, 600);
-        
-        
+	
+	int x= usr.getScore();
+	UserScore= new Label("Score: "+x );
+	TotalStars= new Label(x/50 +"stars collected!" );
     	try
     	{
     		
