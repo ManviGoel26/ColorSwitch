@@ -25,6 +25,13 @@ public class MenuController extends VBox implements Initializable
 {
     @FXML private Button GoToLoadSavedGamesScreenButton;
     @FXML private Button Play;
+    public String[] args;
+    public static Stage Pstage;
+    
+    public void setArgs(String[] a)
+    {
+    	this.args = a;
+    }
     
     
     public void GoToLoadSavedGamesScreen(ActionEvent event) throws Exception
@@ -39,7 +46,9 @@ public class MenuController extends VBox implements Initializable
     	{
     		
     		Stage stage = (Stage) GoToLoadSavedGamesScreenButton.getScene().getWindow();
+    		Pstage = stage;
     		stage.setScene(LGScene);
+//    		System.out.println(Pstage == null);
 
         } 
     	
@@ -50,6 +59,14 @@ public class MenuController extends VBox implements Initializable
 
     	
     }
+    
+    public void Play(ActionEvent event) throws Exception
+    {
+    	System.out.println("finew");
+    	GameCanvas.start_game(Pstage);
+    }
+    
+    
 
     
 
