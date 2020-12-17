@@ -55,7 +55,7 @@ public class GameCanvas extends Application implements Serializable
 	private static Pane gameRoot = new Pane();
 	
 	User usr = new User();
-	public Label scoreLabel = new Label("Score: "+ score);
+	public Label scoreLabel;
 	
 	public static void start_game(Stage primaryStage) throws Exception{
 //		System.out.println(primaryStage == null);	
@@ -75,7 +75,10 @@ public class GameCanvas extends Application implements Serializable
 		}
 		
 		usr.moveY((int)usr.centre.getY(), myObstacles, myColorBalls, mystars);
-		scoreLabel.setText("Score: "+ score);
+		int x= usr.getScore();
+		String s="";
+		if(x%300==0) s=" Great going!!"; 
+		scoreLabel.setText("Score: "+ x+s);
 	}
 	
 	private int checkShapeIntersection() 
@@ -112,8 +115,12 @@ public class GameCanvas extends Application implements Serializable
     public void start(Stage primaryStage) throws Exception 
 	{
 //        Pstage = primaryStage;
+		scoreLabel= new Label("Score: 00" );
+		scoreLabel.setFont(new Font("Arial", 24));
+		
 		primaryStage.setTitle("Game Canvas");
 		Group root = new Group();
+		root.getChildren().add(scoreLabel);
 		Scene scene = new Scene(root, 600, 600);
 	
 		myColorBalls = new ColorBall(root);
@@ -181,6 +188,7 @@ public class GameCanvas extends Application implements Serializable
 		};
 		//java.util.Scanner in=new java.util.Scanner(System.in);
 		//int c=in.nextInt();
+		TimeUnit.SECONDS.sleep(2);
 		timer.start();
 	}
 	
