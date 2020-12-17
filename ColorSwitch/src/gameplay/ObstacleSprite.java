@@ -300,7 +300,7 @@ public class ObstacleSprite extends Pane implements Serializable
 		for(Shape i: nodes) 
 		{
 			TranslateTransition transition=new TranslateTransition();
-	    	transition.setDuration(Duration.seconds(3));
+	    	transition.setDuration(Duration.seconds(speed));
 	    	transition.setToX(500);
 	    	transition.setAutoReverse(true);
 	    	transition.setCycleCount(Animation.INDEFINITE);
@@ -320,7 +320,7 @@ public class ObstacleSprite extends Pane implements Serializable
 	    }
 	
 		RotateTransition transition=new RotateTransition();
-    	transition.setDuration(Duration.seconds(15));
+    	transition.setDuration(Duration.seconds(speed*3));
     	transition.setByAngle(720);
     	transition.setCycleCount(Animation.INDEFINITE);
     	transition.setNode(g);
@@ -338,7 +338,7 @@ public class ObstacleSprite extends Pane implements Serializable
 	    }
 	
 		RotateTransition transition=new RotateTransition();
-    	transition.setDuration(Duration.seconds(15));
+    	transition.setDuration(Duration.seconds(speed*3));
     	transition.setByAngle(-720);
     	transition.setCycleCount(Animation.INDEFINITE);
     	transition.setNode(g);
@@ -351,7 +351,7 @@ public class ObstacleSprite extends Pane implements Serializable
 	    }
 	
 		RotateTransition transition2=new RotateTransition();
-    	transition2.setDuration(Duration.seconds(15));
+    	transition2.setDuration(Duration.seconds(speed*3));
     	transition2.setByAngle(720);
     	transition2.setCycleCount(Animation.INDEFINITE);
     	transition2.setNode(g2);
