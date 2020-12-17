@@ -339,7 +339,7 @@ public class ObstacleSprite extends Pane implements Serializable
 	
 		RotateTransition transition=new RotateTransition();
     	transition.setDuration(Duration.seconds(15));
-    	transition.setByAngle(720);
+    	transition.setByAngle(-720);
     	transition.setCycleCount(Animation.INDEFINITE);
     	transition.setNode(g);
     	transition.play();
@@ -352,7 +352,7 @@ public class ObstacleSprite extends Pane implements Serializable
 	
 		RotateTransition transition2=new RotateTransition();
     	transition2.setDuration(Duration.seconds(15));
-    	transition2.setByAngle(-720);
+    	transition2.setByAngle(720);
     	transition2.setCycleCount(Animation.INDEFINITE);
     	transition2.setNode(g2);
     	transition2.play();
