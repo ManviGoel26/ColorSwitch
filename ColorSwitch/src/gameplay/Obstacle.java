@@ -76,4 +76,3 @@ public class Obstacle implements Serializable{
 // 		}
 		
 	}
-}

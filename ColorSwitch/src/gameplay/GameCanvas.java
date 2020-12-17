@@ -42,7 +42,13 @@ public class GameCanvas extends Application implements Serializable
 	private ColorBall myColorBalls;
 	
 	public static int score = 0;
+	private static int counter = 0;
+	private final int id;
 	 
+	GameCanvas()
+	{
+		id = ++counter;
+	}
 	private static Pane appRoot = new Pane();
 	private static Pane gameRoot = new Pane();
 	
@@ -56,7 +62,7 @@ public class GameCanvas extends Application implements Serializable
 		g.start(primaryStage);
 		
 		System.out.println("running1");
-		launch(args);	
+//		launch(args);	
 	}
 	
 	public void update(Group root) 
@@ -74,12 +80,12 @@ public class GameCanvas extends Application implements Serializable
 	{
 		  if (myObstacles.detectCollision()) 
 		  {
-				try {	
-				deserialize("whatever.txt");	
-			} catch (IOException | ClassNotFoundException e) {	
-				// TODO Auto-generated catch block	
-				e.printStackTrace();	
-			}	
+//				try {	
+//				deserialize("whatever.txt");	
+//			} catch (IOException | ClassNotFoundException e) {	
+//				// TODO Auto-generated catch block	
+//				e.printStackTrace();	
+//			}	
 		  	showPopUpWindow();
 			return 1;
 		  } 
@@ -90,14 +96,16 @@ public class GameCanvas extends Application implements Serializable
 		  }
 		  
 	}
+	
 	public void createSaveSlot() throws IOException 	
 	{	
-		SaveSlot saveData = new SaveSlot(score,this.myObstacles,this.usr);	
-		serialize("whatever.txt",saveData);	
+		SaveSlot saveData = new SaveSlot(score,this.myObstacles,this.usr, this.id);	
+//		serialize("whatever.txt",saveData);	
+		String filename = "C:\\Users\\HP\\eclipse-workspace\\ColorSwitch\\SavedGames\\Game" + this.id + ".txt";
+		serialize(filename, saveData);
+		
 	}
-	
-	
-	
+		
 	@Override
     public void start(Stage primaryStage) throws Exception 
 	{
@@ -189,7 +197,7 @@ public class GameCanvas extends Application implements Serializable
    	    popUpWindow.initStyle(StageStyle.UNDECORATED); //To remove the upper border of class.
   	    popUpWindow.setTitle("PopUpWindow");
    	    popUpWindow.setScene(new Scene(root1)); 
-   	    rv.setTimer();
+//   	    rv.setTimer();
   	    popUpWindow.show();
       }
        catch (IOException exception) 
@@ -198,7 +206,7 @@ public class GameCanvas extends Application implements Serializable
        }
 		
 	}
-	void serialize(String file, SaveSlot saveData) 
+	void serialize(String file, SaveSlot saveData) throws IOException 
 	
 	{
 		FileOutputStream fileOutputStream = new FileOutputStream(file);
@@ -209,7 +217,8 @@ public class GameCanvas extends Application implements Serializable
 
 		objectOutputStream.close();	
 	}
-	void deserialize(String file) throws ClassNotFoundException, IOException	
+	
+	public static void deserialize(String file) throws ClassNotFoundException, IOException	
 	{	
 		FileInputStream fileInputStream = new FileInputStream(file);	
 		BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);	
@@ -220,7 +229,7 @@ public class GameCanvas extends Application implements Serializable
 //		return object;	
 	}	
 
-	private void processSavedData(SaveSlot slot)	
+	private static void processSavedData(SaveSlot slot)	
 	{	
 		GameCanvas canvas = new GameCanvas();	
 		canvas.myObstacles = slot.getObstacle();	
@@ -231,6 +240,8 @@ public class GameCanvas extends Application implements Serializable
 //		System.out.println(canvas.usr.score+"well");	
 
 	}
+	
+//	private void showPauseScreen
 	
 	
 

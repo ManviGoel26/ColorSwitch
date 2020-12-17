@@ -24,7 +24,8 @@ import javafx.stage.Stage;
 public class LoadSavedGamePageController extends VBox implements Initializable
 {
     @FXML private Button GoToMenuButton;
-    @FXML private Button Play;
+    @FXML private Button loadGame;
+    @FXML private TextField GameNumber;
     
     
     public void GoToMenuScreen(ActionEvent event) throws Exception
@@ -49,6 +50,16 @@ public class LoadSavedGamePageController extends VBox implements Initializable
         }
 
 	
+    }
+    
+    public void GoToLoadGame(ActionEvent event) throws ClassNotFoundException, IOException
+    {
+//    	if (GameNumber.getText())
+    	String filename = "C:\\Users\\HP\\eclipse-workspace\\ColorSwitch\\SavedGames\\Game" + GameNumber.getText() + ".txt";
+		
+    	GameCanvas.deserialize(filename);
+//    	String fileName = "Game" + GameNumber.getText();
+    	
     }
 
     
