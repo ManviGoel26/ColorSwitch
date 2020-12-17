@@ -431,32 +431,31 @@ public class ObstacleSprite extends Pane implements Serializable
 		Shape_number = input.readInt();
 		constructor_number = input.readInt();
 		nodes = new ArrayList<>();
-//		switch(S)) 
-//		{
-//			case 1: 
-//				CircleSprite(ht);
-//				this.Shape_number = 0;
-//				break;
-//			
-//			case 2: 
-//				RectangleSprite(ht);
-//				this.Shape_number = 1;
-//				break;
-//			
-//			case 3: 
-//				longCircleSprite(ht);
-//				this.Shape_number = 2;
-//				break;	
-//			case 4:
-//				RotatingSprite(ht);
-//				this.Shape_number = 3;
-//				break;
-//			case 5:
-//				DoubleRotatingSprite(ht);
-//				this.Shape_number = 4;
-//				break;
-//			
-//		}
+		switch(Shape_number) 
+		{
+			case 0: 
+				CircleSprite(constructor_number);
+//				Shape_number = 0;
+				break;
+			
+			case 1: 
+				RectangleSprite(constructor_number);
+//				Shape_number = 1;
+				break;
+			
+			case 2: 
+				longCircleSprite(constructor_number);
+//				Shape_number = 2;
+				break;	
+			case 3:
+				RotatingSprite(constructor_number);
+//				Shape_number = 3;
+				break;
+			case 4:
+				DoubleRotatingSprite(constructor_number);
+//				Shape_number = 4;
+				break;
+		}
 		
 	}
 	
