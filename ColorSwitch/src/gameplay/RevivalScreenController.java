@@ -33,7 +33,7 @@ public class RevivalScreenController extends VBox implements Initializable
     private int startTime = 5;
     
     @FXML
-    private Label GameCanvas;//Need to fix
+    private Stage GameCanvas;//Need to fix
     
     
     public RevivalScreenController()
@@ -41,7 +41,7 @@ public class RevivalScreenController extends VBox implements Initializable
     	
     }
     
-    public RevivalScreenController(Label primaryStage)
+    public RevivalScreenController(Stage primaryStage)
     {
     	this.GameCanvas = primaryStage;
     	System.out.println();
@@ -49,10 +49,10 @@ public class RevivalScreenController extends VBox implements Initializable
     	
     }
     
-    void setGameCanvas(Label primaryStage)
+    void setGameCanvas(Stage primaryStage)
     {
     	this.GameCanvas = primaryStage;
-    	System.out.println(this.GameCanvas.getId());
+//    	System.out.println(this.GameCanvas.getId);
 //    	
     }
     
@@ -61,7 +61,7 @@ public class RevivalScreenController extends VBox implements Initializable
     public void GoToGameFinishedScreen(ActionEvent event) throws Exception
     {
 //    	Calls the Game finished page;
-//		System.out.println(this.GameCanvas == null);
+		System.out.println(this.GameCanvas == null);
     	FXMLLoader GFPageLoader = new FXMLLoader(getClass().getResource("GameFinishedScreen.fxml"));
         Parent GFPane = GFPageLoader.load();
         Scene GFScene = new Scene(GFPane, 400, 600);

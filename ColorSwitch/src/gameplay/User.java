@@ -105,36 +105,26 @@ class User extends Pane implements Serializable
 		s.writeInt(score);	
 		s.writeDouble(this.centre.getX());	
 		s.writeDouble(this.centre.getY());	
-		s.writeChars(rectangle.getFill().toString());	
+		s.writeObject(rectangle.getFill().toString());	
 		System.out.println("something");	
 	}
 	private void readObject(ObjectInputStream input) throws IOException, ClassNotFoundException	
 	{	
 
-		int newScore = input.readInt();	
+		score = input.readInt();	
 		double new_x = input.readDouble();	
 		double new_y = input.readDouble();	
-		String newColor = input.readLine(); //need to check this	
-		System.out.println(newScore+"fwnd");	
-//		Color color = Color.web(newColor); 	
-		Point2D newCentre = new Point2D(new_x, new_y);	
+		centre = new Point2D(new_x, new_y);
+		
+		String newColor = (String)input.readObject(); //need to check this	
+		System.out.println(newColor+"fwnd");	
+		Color color = Color.web(newColor); 	
+		rectangle = new Rectangle(20,20,color);
+//		Point2D newCentre = new Point2D(new_x, new_y);	
 
 
-		User user = new User();	
-//		user.setColor(color);	
-		user.setScore(newScore);	
-		user.setUserCentre(newCentre);	
 	}
-	private void setUserCentre(Point2D newCentre) {
-		// TODO Auto-generated method stub
-		this.centre = newCentre;
-		
-	}
-	private void setScore(int newScore) {
-		// TODO Auto-generated method stub
-		this.score = newScore;
-		
-	}
+	
 	
 
 }

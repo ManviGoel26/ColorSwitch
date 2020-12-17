@@ -26,15 +26,19 @@ public class SaveSlot implements Serializable
 	
 	private void writeObject(ObjectOutputStream output) throws IOException
 	{
+		output.writeInt(score);
+		output.writeInt(id);
 		output.writeObject(this.obs);
 		output.writeObject(this.user);
-		output.writeInt(score);
-	}
+		}
 	private void readObject(ObjectInputStream input) throws IOException, ClassNotFoundException
 	{
+		score = input.readInt();
+		id = input.readInt();
+		obs = (Obstacle) input.readObject();
+		user = (User) input.readObject();
+//		return new SaveSlot(0, s, u, 0);
 		
-		Obstacle s = (Obstacle) input.readObject();
-		User u = (User) input.readObject();
 //		int score = (int) input.readObject();
 //		input.close();
 //		System.out.println(u.get+"wicbud");
