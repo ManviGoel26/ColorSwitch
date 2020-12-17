@@ -115,6 +115,8 @@ public class GameCanvas extends Application implements Serializable
     public void start(Stage primaryStage) throws Exception 
 	{
 //        Pstage = primaryStage;
+		AudioClip note=new AudioClip(this.getClass().getResource("littleidea.mp3").toString());
+		note.play();
 		scoreLabel= new Label("Score: 00" );
 		scoreLabel.setFont(new Font("Arial", 24));
 		
