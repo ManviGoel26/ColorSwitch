@@ -77,13 +77,16 @@ class User extends Pane implements Serializable
 	
 	
 	
-	public void moveY(int value, Obstacle myObstacles) {
+public void moveY(int value, Obstacle myObstacles, ColorBall cb, Stars st) {
 		
 		boolean moveDown = value>0 ? true: false;
 		
 		if(getTranslateY() < 240) 
 		{
 			myObstacles.update();
+			cb.update();
+			st.update();
+			
 		}
 		for(int i = 0; i < Math.abs(value); i++) {
 			
@@ -101,10 +104,11 @@ class User extends Pane implements Serializable
 		}
 	}
 	
+	
 	public void jump() 
 	{
 		centre = new Point2D(3,  -15);
-		score++;
+//		score++;
 		//System.out.println("jumped");
 	}
 	
@@ -128,7 +132,12 @@ class User extends Pane implements Serializable
 		
 	}
 	
-	
+	public void addPoints()
+	{
+		score += 50;
+		System.out.println(score);
+		
+	}
 	private void writeObject(ObjectOutputStream s) throws IOException
 	{
 //		Saving score, color, center coordinates
@@ -146,12 +155,13 @@ class User extends Pane implements Serializable
 		double new_x = input.readDouble();
 		double new_y = input.readDouble();
 		String newColor = input.readLine(); //need to check this
-		Color color = Color.web(newColor); 
+		System.out.println(newScore+"fwnd");
+//		Color color = Color.web(newColor); 
 		Point2D newCentre = new Point2D(new_x, new_y);
 				
 		
 		User user = new User();
-		user.setColor(color);
+//		user.setColor(color);
 		user.setScore(newScore);
 		user.setUserCentre(newCentre);
 	}
