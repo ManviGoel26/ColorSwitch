@@ -44,11 +44,13 @@ public class GameCanvas extends Application implements Serializable
 	public static int score = 0;
 	private static int counter = 0;
 	private final int id;
+	private static Stage Pstage;
 	 
 	GameCanvas()
 	{
+		myObstacles = new Obstacle(400);
 		id = ++counter;
-	}
+	} 
 	private static Pane appRoot = new Pane();
 	private static Pane gameRoot = new Pane();
 	
@@ -109,14 +111,13 @@ public class GameCanvas extends Application implements Serializable
 	@Override
     public void start(Stage primaryStage) throws Exception 
 	{
-        
+//        Pstage = primaryStage;
 		primaryStage.setTitle("Game Canvas");
 		Group root = new Group();
 		Scene scene = new Scene(root, 600, 600);
 	
-		myObstacles = new Obstacle(400);
 		myColorBalls = new ColorBall(root);
-		mystars=new Stars(root);
+		mystars = new Stars(root);
 		
 		myObstacles.setTranslations(root);
 	
@@ -142,7 +143,7 @@ public class GameCanvas extends Application implements Serializable
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		final long startNanoTime = System.nanoTime();
-		int flag=0;
+		int flag = 0;
 		
 		AnimationTimer timer = new AnimationTimer() 
 		{
@@ -194,7 +195,7 @@ public class GameCanvas extends Application implements Serializable
            Parent root1 = (Parent) fxmlLoader.load();
 
    		popUpWindow.initModality(Modality.APPLICATION_MODAL );
-   	    popUpWindow.initStyle(StageStyle.UNDECORATED); //To remove the upper border of class.
+//   	    popUpWindow.initStyle(StageStyle.UNDECORATED); //To remove the upper border of class.
   	    popUpWindow.setTitle("PopUpWindow");
    	    popUpWindow.setScene(new Scene(root1)); 
 //   	    rv.setTimer();
@@ -218,27 +219,31 @@ public class GameCanvas extends Application implements Serializable
 		objectOutputStream.close();	
 	}
 	
-	public static void deserialize(String file) throws ClassNotFoundException, IOException	
+	public static void deserialize(String file, Stage Pstage) throws Exception	
 	{	
 		FileInputStream fileInputStream = new FileInputStream(file);	
 		BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);	
 		ObjectInputStream objectInputStream = new ObjectInputStream(bufferedInputStream);	
 		SaveSlot savedData = (SaveSlot) objectInputStream.readObject();	
-		processSavedData(savedData);	
+		System.out.println((savedData.getUser() == null) + "bwfne");
+		processSavedData(savedData, Pstage);	
 		objectInputStream.close();	
 //		return object;	
 	}	
 
-	private static void processSavedData(SaveSlot slot)	
+	private static void processSavedData(SaveSlot slot, Stage pStage) throws Exception	
 	{	
 		GameCanvas canvas = new GameCanvas();	
 		canvas.myObstacles = slot.getObstacle();	
 
-		canvas.usr = slot.getUser();	
-		score = slot.getScore();	
-		System.out.println(score);	
-//		System.out.println(canvas.usr.score+"well");	
+		canvas.usr = slot.getUser();
+		System.out.println(slot.getUser() == null);	
 
+//		score = slot.getScore();
+//		Stage s = pStage;
+		canvas.start(pStage);
+//		System.out.println(score);	
+		
 	}
 	
 //	private void showPauseScreen

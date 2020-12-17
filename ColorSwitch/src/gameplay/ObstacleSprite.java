@@ -34,6 +34,7 @@ public class ObstacleSprite extends Pane implements Serializable
 	
 	public ObstacleSprite(int i, int ht)
 	{
+		
 		switch(i) 
 		{
 			case 1: 
@@ -426,11 +427,37 @@ public class ObstacleSprite extends Pane implements Serializable
 	
 	private void readObject(ObjectInputStream input) throws IOException, ClassNotFoundException
 	{
-		boolean new_onscreen = input.readBoolean();
-		int shape_number = input.readInt();
-		int cons_number = input.readInt();
+		onscreen = input.readBoolean();
+		Shape_number = input.readInt();
+		constructor_number = input.readInt();
+		nodes = new ArrayList<>();
+//		switch(S)) 
+//		{
+//			case 1: 
+//				CircleSprite(ht);
+//				this.Shape_number = 0;
+//				break;
+//			
+//			case 2: 
+//				RectangleSprite(ht);
+//				this.Shape_number = 1;
+//				break;
+//			
+//			case 3: 
+//				longCircleSprite(ht);
+//				this.Shape_number = 2;
+//				break;	
+//			case 4:
+//				RotatingSprite(ht);
+//				this.Shape_number = 3;
+//				break;
+//			case 5:
+//				DoubleRotatingSprite(ht);
+//				this.Shape_number = 4;
+//				break;
+//			
+//		}
 		
-		ObstacleSprite newObstacleSprite = new ObstacleSprite(shape_number, cons_number);
 	}
 	
 }

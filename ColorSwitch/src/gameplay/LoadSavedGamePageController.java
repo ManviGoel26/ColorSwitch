@@ -52,12 +52,12 @@ public class LoadSavedGamePageController extends VBox implements Initializable
 	
     }
     
-    public void GoToLoadGame(ActionEvent event) throws ClassNotFoundException, IOException
+    public void GoToLoadGame(ActionEvent event) throws Exception
     {
 //    	if (GameNumber.getText())
     	String filename = "C:\\Users\\HP\\eclipse-workspace\\ColorSwitch\\SavedGames\\Game" + GameNumber.getText() + ".txt";
 		
-    	GameCanvas.deserialize(filename);
+    	GameCanvas.deserialize(filename,(Stage) GoToMenuButton.getScene().getWindow() );
 //    	String fileName = "Game" + GameNumber.getText();
     	
     }
