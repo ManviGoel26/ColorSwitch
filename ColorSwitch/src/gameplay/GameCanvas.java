@@ -1,15 +1,14 @@
 package gameplay;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
+import java.io.ObjectInputStream;
 //import java.util.Scanner;
-
+import java.io.Serializable;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
@@ -37,6 +36,7 @@ import javafx.util.Duration;
 public class GameCanvas extends Application implements Serializable
 {
 	
+	
 	private Obstacle myObstacles;
 	private Stars mystars;
 	private ColorBall myColorBalls;
@@ -49,13 +49,14 @@ public class GameCanvas extends Application implements Serializable
 	User usr = new User();
 	public Label scoreLabel = new Label("Score: "+ score);
 	
-	public static void start_game(Stage primaryStage) throws Exception
-	{	
-//		System.out.println(primaryStage == null);
-//		Application.launch(args);
-		GameCanvas g = new GameCanvas();
+	public static void start_game(Stage primaryStage) throws Exception{
+//		System.out.println(primaryStage == null);	
+//		Application.launch(args);	
+		GameCanvas g = new GameCanvas();	
 		g.start(primaryStage);
 		
+		System.out.println("running1");
+		launch(args);	
 	}
 	
 	public void update(Group root) 
@@ -73,18 +74,14 @@ public class GameCanvas extends Application implements Serializable
 	{
 		  if (myObstacles.detectCollision()) 
 		  {
-				
-		  	System.out.println("Yay!!!");
-//		  	showStage();
-//		  	Added the pop Up Window
-		  	try {
-				deserialize("whatever.txt");
-			} catch (IOException | ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				try {	
+				deserialize("whatever.txt");	
+			} catch (IOException | ClassNotFoundException e) {	
+				// TODO Auto-generated catch block	
+				e.printStackTrace();	
+			}	
 		  	showPopUpWindow();
-		    return 1;
+			return 1;
 		  } 
 		  
 		  else 
@@ -93,11 +90,10 @@ public class GameCanvas extends Application implements Serializable
 		  }
 		  
 	}
-	
-	public void createSaveSlot() throws IOException 
-	{
-		SaveSlot saveData = new SaveSlot(score,this.myObstacles,this.usr);
-		serialize("whatever.txt",saveData);
+	public void createSaveSlot() throws IOException 	
+	{	
+		SaveSlot saveData = new SaveSlot(score,this.myObstacles,this.usr);	
+		serialize("whatever.txt",saveData);	
 	}
 	
 	
@@ -106,32 +102,29 @@ public class GameCanvas extends Application implements Serializable
     public void start(Stage primaryStage) throws Exception 
 	{
         
-//		primaryStage.setTitle("Game Canvas");
+		primaryStage.setTitle("Game Canvas");
 		Group root = new Group();
 		Scene scene = new Scene(root, 600, 600);
 	
-		myObstacles = new Obstacle();
+		myObstacles = new Obstacle(400);
 		myColorBalls = new ColorBall(root);
-		mystars = new Stars(root);
+		mystars=new Stars(root);
 		
 		myObstacles.setTranslations(root);
 	
 		root.getChildren().add(usr);
-		
-		Button pause = new Button("Pause");
-		pause.setOnAction(value -> {
-			try {
-				createSaveSlot();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-//			
-		});
-		root.getChildren().add(pause);
-	
-//		root.getChildren().add(depause);
-	
+		Button pause = new Button("Pause");	
+		pause.setOnAction(value -> {	
+			try {	
+				createSaveSlot();	
+			} catch (IOException e) {	
+				// TODO Auto-generated catch block	
+				e.printStackTrace();	
+			}	
+//				
+		});	
+		root.getChildren().add(pause);	
+
 	
 		scene.setOnMouseClicked(event->{
 			usr.jump();
@@ -139,30 +132,46 @@ public class GameCanvas extends Application implements Serializable
 		});
 	
 		primaryStage.setScene(scene);
-//		primaryStage.show();
-	
-	
+		primaryStage.show();
+		final long startNanoTime = System.nanoTime();
+		int flag=0;
+		
 		AnimationTimer timer = new AnimationTimer() 
 		{
+			
+			
 			@Override
-			public void handle(long arg0)
+			public void handle(long currentNanoTime)
 			{
-				
-				int newCol = myColorBalls.detectCollision();
+//				double t = (currentNanoTime - startNanoTime) / 1000000000.0;
+//				//System.out.println(t);
+//				if(t>30 && t<30.3) {
+//					myObstacles = new Obstacle(-4000);
+//					myObstacles.setTranslations(root);
+//					System.out.println("setted translation");
+//					flag=1;
+//				}
+				int newCol=myColorBalls.detectCollision();
 				if(newCol>0) {
 					usr.changeColor(newCol);
 				}
 				int gainPoints=mystars.detectCollision();
+				
+				//System.out.println(gainPoints);
+				
 				if(gainPoints>0) usr.addPoints();
 				if(checkShapeIntersection() == 1){
 					stop();
 				}
-			
+				
+				//i++;
+				//System.out.println(i);
 				update(root);
 				
 			}
 		};
-	
+		//java.util.Scanner in=new java.util.Scanner(System.in);
+		//int c=in.nextInt();
 		timer.start();
 	}
 	
@@ -171,30 +180,27 @@ public class GameCanvas extends Application implements Serializable
 		Stage popUpWindow = new Stage();
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RevivalScreen.fxml"));
 		RevivalScreenController rv = new RevivalScreenController();
-		
+	
+      try 
+       {
+           Parent root1 = (Parent) fxmlLoader.load();
 
-
-        try 
-        {
-            Parent root1 = (Parent) fxmlLoader.load();
-
-    		popUpWindow.initModality(Modality.APPLICATION_MODAL );
-//    	    popUpWindow.initStyle(StageStyle.UNDECORATED); //To remove the upper border of class.
-    	    popUpWindow.setTitle("PopUpWindow");
-    	    popUpWindow.setScene(new Scene(root1)); 
-//    	    rv.setTimer();
-    	    popUpWindow.show();
-        }
-        catch (IOException exception) 
-        {
-            throw new RuntimeException(exception);
-        }
+   		popUpWindow.initModality(Modality.APPLICATION_MODAL );
+   	    popUpWindow.initStyle(StageStyle.UNDECORATED); //To remove the upper border of class.
+  	    popUpWindow.setTitle("PopUpWindow");
+   	    popUpWindow.setScene(new Scene(root1)); 
+   	    rv.setTimer();
+  	    popUpWindow.show();
+      }
+       catch (IOException exception) 
+       {
+           throw new RuntimeException(exception);
+       }
 		
 	}
+	void serialize(String file, SaveSlot saveData) 
 	
-	void serialize(String file, SaveSlot saveData) throws IOException
 	{
-//		GameCanvas canvas = this;
 		FileOutputStream fileOutputStream = new FileOutputStream(file);
 		BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
 		ObjectOutputStream objectOutputStream = new ObjectOutputStream(bufferedOutputStream);
@@ -203,37 +209,28 @@ public class GameCanvas extends Application implements Serializable
 
 		objectOutputStream.close();	
 	}
-	
-	void deserialize(String file) throws ClassNotFoundException, IOException
-	{
-		FileInputStream fileInputStream = new FileInputStream(file);
-		BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-		ObjectInputStream objectInputStream = new ObjectInputStream(bufferedInputStream);
-		SaveSlot savedData = (SaveSlot) objectInputStream.readObject();
-		processSavedData(savedData);
-		objectInputStream.close();
-//		return object;
+	void deserialize(String file) throws ClassNotFoundException, IOException	
+	{	
+		FileInputStream fileInputStream = new FileInputStream(file);	
+		BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);	
+		ObjectInputStream objectInputStream = new ObjectInputStream(bufferedInputStream);	
+		SaveSlot savedData = (SaveSlot) objectInputStream.readObject();	
+		processSavedData(savedData);	
+		objectInputStream.close();	
+//		return object;	
+	}	
+
+	private void processSavedData(SaveSlot slot)	
+	{	
+		GameCanvas canvas = new GameCanvas();	
+		canvas.myObstacles = slot.getObstacle();	
+
+		canvas.usr = slot.getUser();	
+		score = slot.getScore();	
+		System.out.println(score);	
+//		System.out.println(canvas.usr.score+"well");	
+
 	}
-	
-	private void processSavedData(SaveSlot slot)
-	{
-		GameCanvas canvas = new GameCanvas();
-		canvas.myObstacles = slot.getObstacle();
-		
-		canvas.usr = slot.getUser();
-		score = slot.getScore();
-		System.out.println(score);
-//		System.out.println(canvas.usr.score+"well");
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 
