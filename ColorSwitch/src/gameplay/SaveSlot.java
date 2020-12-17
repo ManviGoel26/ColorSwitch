@@ -12,13 +12,15 @@ public class SaveSlot implements Serializable
 	private int score;
 	private Obstacle obs;
 	private User user;
+	private int id;
 
-	public SaveSlot(int s, Obstacle o, User u) 
+	public SaveSlot(int s, Obstacle o, User u, int id) 
 	{
 		super();
 		this.score = s;
 		this.obs = o;
 		this.user = u;
+		this.id = id;
 		
 	}
 	

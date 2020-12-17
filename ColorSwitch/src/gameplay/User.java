@@ -45,6 +45,8 @@ class User extends Pane implements Serializable
 		getChildren().addAll(rectangle);
 	}
 	
+//	public void setSc
+	
 	public void moveY(int value, Obstacle myObstacles, ColorBall cb, Stars st) {
 		
 		boolean moveDown = value>0 ? true: false;
@@ -122,6 +124,16 @@ class User extends Pane implements Serializable
 //		user.setColor(color);	
 		user.setScore(newScore);	
 		user.setUserCentre(newCentre);	
+	}
+	private void setUserCentre(Point2D newCentre) {
+		// TODO Auto-generated method stub
+		this.centre = newCentre;
+		
+	}
+	private void setScore(int newScore) {
+		// TODO Auto-generated method stub
+		this.score = newScore;
+		
 	}
 	
 

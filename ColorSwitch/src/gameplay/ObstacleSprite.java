@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.sun.prism.paint.Paint;
+//import com.sun.prism.paint.Paint;
 
 import javafx.animation.Animation;
 import javafx.animation.RotateTransition;
@@ -63,6 +63,7 @@ public class ObstacleSprite extends Pane implements Serializable
 	}
 	
 	public void DoubleRotatingSprite(int ht) {
+		this.constructor_number =ht;
 		nodes = new ArrayList<>();
 		
 		int wid = 20, x=300, radius=120;
@@ -378,6 +379,7 @@ public class ObstacleSprite extends Pane implements Serializable
 	
 	public void RotatingSprite(int ht)
 	{
+		this.constructor_number = ht;
 	
 		nodes = new ArrayList<>();
 				
@@ -432,14 +434,15 @@ public class ObstacleSprite extends Pane implements Serializable
 	}
 	
 }
-class complexshape extends Shape{
-	Rectangle rectangle;
-	public complexshape() {
-		rectangle=new Rectangle(300, 400);
-	}
-}
-class bloop extends Group{
-	public Paint getFill() {
-		return null;//Color.BLACK;
-	}
-}
+//class complexshape extends Shape{
+//	Rectangle rectangle;
+//	public complexshape() {
+//		rectangle=new Rectangle(300, 400);
+//	}
+//}
+//class bloop extends Group
+////{
+//	public Paint getFill() {
+//		return null;//Color.BLACK;
+//	}
+//}
