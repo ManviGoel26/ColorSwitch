@@ -71,7 +71,7 @@ public class Stars{
 		
 		for(Polygon star: stars) {
 			Shape intersect = Shape.intersect(User.rectangle, star);
-			if (intersect.getBoundsInLocal().getWidth() != -1) {
+			if (star.getFill()!=Color.TRANSPARENT && intersect.getBoundsInLocal().getWidth() != -1) {
 				star.setFill(Color.TRANSPARENT);
 				star.setStroke(Color.TRANSPARENT);
 				return 50;
