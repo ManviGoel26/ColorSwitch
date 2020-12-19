@@ -248,15 +248,15 @@ public class ObstacleSprite extends Pane implements Serializable
 		
 	}
 	
-	public boolean checkIfCollided() 
+	public boolean checkIfCollided(User user) 
 	{
 		//System.out.println("checked");
 		boolean collisionDetected = false;
 		for (Shape static_bloc : nodes)
 		{
-			Shape intersect = Shape.intersect(User.rectangle, static_bloc);
+			Shape intersect = Shape.intersect(user.rectangle, static_bloc);
 			
-			if (intersect.getBoundsInLocal().getWidth() != -1 && User.rectangle.getFill()!=static_bloc.getStroke())
+			if (intersect.getBoundsInLocal().getWidth() != -1 && user.rectangle.getFill()!=static_bloc.getStroke())
 			{
 				//&& static_bloc.getFill()!=Color.BLACK 
 				//System.out.println(static_bloc.getStroke());
@@ -338,7 +338,9 @@ public class ObstacleSprite extends Pane implements Serializable
 	    }
 	
 		RotateTransition transition=new RotateTransition();
+
     	transition.setDuration(Duration.seconds(speed*3));
+
     	transition.setByAngle(-720);
     	transition.setCycleCount(Animation.INDEFINITE);
     	transition.setNode(g);
@@ -351,6 +353,7 @@ public class ObstacleSprite extends Pane implements Serializable
 	    }
 	
 		RotateTransition transition2=new RotateTransition();
+
     	transition2.setDuration(Duration.seconds(speed*3));
     	transition2.setByAngle(720);
     	transition2.setCycleCount(Animation.INDEFINITE);

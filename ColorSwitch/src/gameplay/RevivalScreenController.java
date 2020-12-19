@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,11 +30,21 @@ public class RevivalScreenController extends VBox implements Initializable
     
     @FXML
     private Button CloseButton;
+    @FXML private Button revive;
     
     private int startTime = 5;
     
     @FXML
-    private Stage GameCanvas;//Need to fix
+    private static Stage GameCanvass;//Need to fix
+    private static User usr;
+    private static int id;
+    
+    void setUser(User user, int idi)
+    {
+    	id = idi;
+    	usr = user;
+    }
+
     
     
     public RevivalScreenController()
@@ -43,15 +54,15 @@ public class RevivalScreenController extends VBox implements Initializable
     
     public RevivalScreenController(Stage primaryStage)
     {
-    	this.GameCanvas = primaryStage;
-    	System.out.println();
+    	RevivalScreenController.GameCanvass = primaryStage;
+//    	System.out.println((primaryStage == null)+"fn");
 //    	this.GameCanvas.close();
     	
     }
     
     void setGameCanvas(Stage primaryStage)
     {
-    	this.GameCanvas = primaryStage;
+    	this.GameCanvass = primaryStage;
 //    	System.out.println(this.GameCanvas.getId);
 //    	
     }
@@ -61,10 +72,12 @@ public class RevivalScreenController extends VBox implements Initializable
     public void GoToGameFinishedScreen(ActionEvent event) throws Exception
     {
 //    	Calls the Game finished page;
-		System.out.println(this.GameCanvas == null);
+//		System.out.println(this.GameCanvas == null);
     	FXMLLoader GFPageLoader = new FXMLLoader(getClass().getResource("GameFinishedScreen.fxml"));
         Parent GFPane = GFPageLoader.load();
         Scene GFScene = new Scene(GFPane, 400, 600);
+        GameFinishedScreenController g = new GameFinishedScreenController();
+        g.setUser(usr);
         
         
     	try
@@ -72,6 +85,7 @@ public class RevivalScreenController extends VBox implements Initializable
     		
     		Stage stage = (Stage) CloseButton.getScene().getWindow();
     		stage.setScene(GFScene);
+//    		GameCanvass.close();
 
         } 
     	
@@ -108,6 +122,25 @@ public class RevivalScreenController extends VBox implements Initializable
 //            }
 //        }, 1000,1000);
 //    }
+    
+    
+    public void ResumeGame(ActionEvent event) throws Exception
+    {
+    	if (usr.score >= 50)
+    	{
+//    		System.out.println(id +"ef");
+//        	if (GameNumber.getText())
+        	String filename = "C:\\Users\\HP\\eclipse-workspace\\ColorSwitch\\SavedGames\\Game" + id + ".txt";
+    		
+        	GameCanvas.deserialize(filename,(Stage) revive.getScene().getWindow() );
+        	usr.score -= 50;
+        	usr.centre = new Point2D(300,300);
+//        	String fileName = "Game" + GameNumber.getText();
+        	
+    		
+    	}
+    	
+    }
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) 

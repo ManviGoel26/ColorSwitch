@@ -46,7 +46,7 @@ public class Stars{
 			stars.add(star);
 			centrey-=500;
 		}
-		System.out.println("made new ballss");
+//		System.out.println("made new ballss");
 		root.getChildren().addAll(stars);
 		
 //		String ShapeName = "Circle";
@@ -67,10 +67,10 @@ public class Stars{
 		
 	}
 	
-	public int detectCollision() {
+	public int detectCollision(User user) {
 		
 		for(Polygon star: stars) {
-			Shape intersect = Shape.intersect(User.rectangle, star);
+			Shape intersect = Shape.intersect(user.rectangle, star);
 			if (star.getFill()!=Color.TRANSPARENT && intersect.getBoundsInLocal().getWidth() != -1) {
 				star.setFill(Color.TRANSPARENT);
 				star.setStroke(Color.TRANSPARENT);

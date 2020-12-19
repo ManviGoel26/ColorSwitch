@@ -34,7 +34,7 @@
             <Font name="Book Antiqua" size="40.0" />
          </font>
       </Text>
-      <Button layoutX="29.0" layoutY="115.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="272.0" style="-fx-background-color: #EB6315;" text="100" textFill="WHITE">
+      <Button fx:id="revive" layoutX="29.0" layoutY="115.0" mnemonicParsing="false" onAction="#ResumeGame" prefHeight="84.0" prefWidth="272.0" style="-fx-background-color: #EB6315;" text="100" textFill="WHITE">
          <font>
             <Font name="Book Antiqua" size="30.0" />
          </font>

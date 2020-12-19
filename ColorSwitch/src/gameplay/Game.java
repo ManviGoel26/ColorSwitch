@@ -7,19 +7,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Game extends Application
 {
 	static String[] args;
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-//		Game g = new Game();
-//		g.call(args);
-		System.out.println("semoth");
 		Game.args = args;
-		
-
 		launch(args);
 				
 	}
@@ -42,6 +37,7 @@ public class Game extends Application
     		Stage stage = new Stage();
     		stage.setScene(LGScene);
     		MenuController.Pstage = stage;
+    		stage.initStyle(StageStyle.UNDECORATED);
     		stage.show();
 
         } 

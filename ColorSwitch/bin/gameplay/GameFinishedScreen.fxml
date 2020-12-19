@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: #292929;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gameplay.GameFinishedScreenController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #292929;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gameplay.GameFinishedScreenController">
    <children>
       <Button fx:id="GoToMainMenuButton" contentDisplay="GRAPHIC_ONLY" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#GoToMenuScreen" prefHeight="32.0" prefWidth="33.0" style="-fx-background-color: #292929;" text="Button" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
          <graphic>
@@ -20,19 +20,19 @@
             </ImageView>
          </graphic>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8770e" height="33.0" layoutY="239.0" stroke="BLACK" strokeType="INSIDE" width="450.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#53544e" height="33.0" layoutY="146.0" stroke="BLACK" strokeType="INSIDE" width="450.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8770e" height="33.0" layoutY="239.0" stroke="BLACK" strokeType="INSIDE" width="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#53544e" height="33.0" layoutY="146.0" stroke="BLACK" strokeType="INSIDE" width="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <ImageView fitHeight="118.0" fitWidth="189.0" layoutX="129.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images_/logo.png" />
          </image>
       </ImageView>
-      <Text fill="#fcf9f9" layoutX="171.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SCORE" AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="180.365234375" AnchorPane.topAnchor="146.0">
+      <Text fill="#fcf9f9" layoutX="156.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SCORE" AnchorPane.leftAnchor="156.0" AnchorPane.rightAnchor="155.365234375" AnchorPane.topAnchor="146.349609375">
          <font>
             <Font name="Californian FB" size="28.0" />
          </font>
       </Text>
-      <Text fill="#f8f6f6" layoutX="149.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BEST SCORE">
+      <Text fill="#f8f6f6" layoutX="130.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BEST SCORE">
          <font>
             <Font name="Californian FB" size="28.0" />
          </font>
@@ -42,7 +42,7 @@
             <Image url="@../../Images_/star.png" />
          </image>
       </ImageView>
-      <Button fx:id="Replay" contentDisplay="GRAPHIC_ONLY" layoutX="175.0" layoutY="352.0" mnemonicParsing="false" style="-fx-background-color: #292929; -fx-background-radius: 3em;" text="Button">
+      <Button fx:id="Replay" contentDisplay="GRAPHIC_ONLY" layoutX="155.0" layoutY="352.0" mnemonicParsing="false" onAction="#replay" style="-fx-background-color: #292929; -fx-background-radius: 3em;" text="Button">
          <graphic>
             <ImageView fitHeight="74.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -51,12 +51,12 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="UserScore" layoutX="211.0" layoutY="188.0" text="0" textFill="WHITE">
+      <Label fx:id="UserScore" layoutX="191.0" layoutY="188.0" text="0" textFill="WHITE">
          <font>
             <Font name="Book Antiqua" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="HighScore" layoutX="211.0" layoutY="278.0" text="0" textFill="WHITE">
+      <Label fx:id="HighScore" layoutX="191.0" layoutY="278.0" text="0" textFill="WHITE">
          <font>
             <Font name="Book Antiqua" size="36.0" />
          </font>
