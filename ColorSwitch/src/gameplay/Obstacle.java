@@ -38,14 +38,28 @@ public class Obstacle implements Serializable{
 		return false;
 	}
 	
-	public void setTranslations(Group root) 
-	{
-		int nooftypes = 5;
-		for(int i = 0; i < 20; i++) {
-			int sp = 5;
-//			if(i<10) sp=3;
-//			else if(i<15) sp=2;
-//			else sp=1;
+	public void setTranslations(Group root) {
+		int nooftypes=5;
+		for(int i=0;i<20;i++) {
+			int sp;
+			if(i<10) sp=3;
+			else if(i<15) sp=2;
+			else sp=1;
+			
+				int shapetype=obsprites.get(i).Shape_number;
+				
+				if(shapetype==0)
+					obsprites.get(i).setTranslation2(root,sp);
+				else if(shapetype==1) 
+					obsprites.get(i).setTranslation(root,sp);
+				else if(shapetype==2)
+					obsprites.get(i).setTranslation2(root,sp);
+				else if(shapetype==3)
+					obsprites.get(i).setTranslation3(root,sp);
+				else if(shapetype==4)
+					obsprites.get(i).setTranslation4(root,sp);
+			
+			
 			
 				int shapetype = obsprites.get(i).Shape_number;
 				

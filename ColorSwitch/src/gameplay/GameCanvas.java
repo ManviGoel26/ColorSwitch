@@ -60,7 +60,9 @@ public class GameCanvas extends Application implements Serializable
 	private static Pane appRoot = new Pane();
 	private static Pane gameRoot = new Pane();
 	
+
 	public Label scoreLabel = new Label(".                   Score: "+ score);
+
 	
 	public static void start_game(Stage primaryStage) throws Exception
 	{
@@ -76,6 +78,7 @@ public class GameCanvas extends Application implements Serializable
 		}
 		
 		usr.moveY((int)usr.centre.getY(), myObstacles, myColorBalls, mystars);
+
 		int x = usr.getScore();
 		String s = "";
 		
@@ -116,10 +119,12 @@ public class GameCanvas extends Application implements Serializable
 //		AudioClip note = new AudioClip(this.getClass().getResource("littleidea.mp3").toString());
 //		note.play();
 		scoreLabel = new Label("       Score: 00" );
+
 		scoreLabel.setFont(new Font("Arial", 24));
 		
 		primaryStage.setTitle("Game Canvas");
 		Group root = new Group();
+		root.getChildren().add(scoreLabel);
 		Scene scene = new Scene(root, 600, 600);
 	
 		myColorBalls = new ColorBall(root);
@@ -190,6 +195,9 @@ public class GameCanvas extends Application implements Serializable
 				
 			}
 		};
+		//java.util.Scanner in=new java.util.Scanner(System.in);
+		//int c=in.nextInt();
+		TimeUnit.SECONDS.sleep(2);
 		timer.start();
 	}
 	
