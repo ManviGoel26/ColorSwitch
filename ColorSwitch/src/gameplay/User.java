@@ -16,7 +16,7 @@ import javafx.scene.layout.Pane;
 class User extends Pane implements Serializable
 {
 	public Point2D centre;
-	public static Rectangle rectangle;
+	public Rectangle rectangle;
 	int score;
 	
 	public User() {
@@ -97,7 +97,7 @@ class User extends Pane implements Serializable
 
 	public void addPoints() {
 		score+=50;
-		System.out.println(score);
+//		System.out.println(score);
 	}
 	private void writeObject(ObjectOutputStream s) throws IOException	
 	{	
@@ -106,7 +106,7 @@ class User extends Pane implements Serializable
 		s.writeDouble(this.centre.getX());	
 		s.writeDouble(this.centre.getY());	
 		s.writeObject(rectangle.getFill().toString());	
-		System.out.println("something");	
+//		System.out.println("something");	
 	}
 	private void readObject(ObjectInputStream input) throws IOException, ClassNotFoundException	
 	{	
@@ -117,14 +117,19 @@ class User extends Pane implements Serializable
 		centre = new Point2D(new_x, new_y);
 		
 		String newColor = (String)input.readObject(); //need to check this	
-		System.out.println(newColor+"fwnd");	
+//		System.out.println(newColor+"fwnd");	
 		Color color = Color.web(newColor); 	
 		rectangle = new Rectangle(20,20,color);
+//		System.out.println(rectangle == null);
 //		Point2D newCentre = new Point2D(new_x, new_y);	
 
 
 	}
 	
+	public int getScore()
+	{
+		return this.score;
+	}
 	
 
 }

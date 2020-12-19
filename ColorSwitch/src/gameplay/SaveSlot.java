@@ -54,7 +54,7 @@ public class SaveSlot implements Serializable
 	
 	public Obstacle getObstacle() 
 	{
-		System.out.println(obs == null);
+//		System.out.println(obs == null);
 		return obs;
 	}
 	

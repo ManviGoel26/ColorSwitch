@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +29,7 @@ public class MenuController extends VBox implements Initializable
     @FXML private Button Play;
     public String[] args;
     public static Stage Pstage;
+    @FXML private Button Close;
     
     public void setArgs(String[] a)
     {
@@ -62,11 +65,14 @@ public class MenuController extends VBox implements Initializable
     
     public void Play(ActionEvent event) throws Exception
     {
-    	System.out.println("finew");
+//    	System.out.println("finew");
     	GameCanvas.start_game(Pstage);
     }
     
-    
+    public void CloseApplication(ActionEvent event)
+    {
+    	Platform.exit();
+    }
 
     
 

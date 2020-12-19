@@ -27,21 +27,50 @@ public class GameFinishedScreenController extends VBox implements Initializable
     @FXML private Button GoToMainMenuButton;
     @FXML private Button Replay;
     @FXML private Label TotalStars;
-
+    
+    private static int highScore;
+    private User usr;
+    
+    void setUser(User user)
+    {
+    	usr = user;
+    }
+    
+    public void replay(ActionEvent event)
+    {
+     	try
+     	
+     	{
+			GameCanvas.start_game((Stage) Replay.getScene().getWindow());
+		}
+     	catch (Exception e)
+     	{
+			e.printStackTrace();
+		}
+    }
     
     public void GoToMenuScreen(ActionEvent event) throws Exception
     {
 //    	Calls the Menu Page
+    	int x = usr.getScore();
+    	UserScore = new Label("" + x );
+    	TotalStars = new Label(x/50 + "" );
+    	if (x > highScore)
+    	{
+    		highScore = x;
+    	}
+    	HighScore = new Label(""+ highScore );
+        
     	FXMLLoader MenuPageLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
         Parent MenuPane = MenuPageLoader.load();
         Scene MenuScene = new Scene(MenuPane, 400, 600);
-        
         
     	try
     	{
     		
     		Stage stage = (Stage) GoToMainMenuButton.getScene().getWindow();
     		stage.setScene(MenuScene);
+    		
 
         } 
     	
@@ -58,8 +87,6 @@ public class GameFinishedScreenController extends VBox implements Initializable
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) 
 	{
-		// TODO Auto-generated method stub
-		
 	}
 
     

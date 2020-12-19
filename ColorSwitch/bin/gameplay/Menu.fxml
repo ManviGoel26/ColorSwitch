@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: #292929;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gameplay.MenuController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #292929;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gameplay.MenuController">
    <opaqueInsets>
       <Insets />
    </opaqueInsets>
    <children>
-      <Button fx:id="Play" contentDisplay="GRAPHIC_ONLY" graphicTextGap="10.0" layoutX="135.0" layoutY="218.0" mnemonicParsing="false" onAction="#Play" text="Button" AnchorPane.bottomAnchor="165.0">
+      <Button fx:id="Play" contentDisplay="GRAPHIC_ONLY" graphicTextGap="10.0" layoutX="107.0" layoutY="219.0" mnemonicParsing="false" onAction="#Play" text="Button" AnchorPane.bottomAnchor="166.0">
          <graphic>
             <ImageView fitHeight="225.0" fitWidth="205.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -28,18 +28,27 @@
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
          </padding>
       </Button>
-      <ImageView fitHeight="150.0" fitWidth="270.0" layoutX="103.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="40.0">
+      <ImageView fitHeight="150.0" fitWidth="270.0" layoutX="65.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="42.0">
          <image>
             <Image url="@../../Images_/logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="GoToLoadSavedGamesScreenButton" layoutX="137.0" layoutY="478.0" mnemonicParsing="false" onAction="#GoToLoadSavedGamesScreen" prefHeight="30.0" prefWidth="210.0" style="-fx-background-color: #292929;" text="Resume" textAlignment="CENTER" textFill="#e10808" textOverrun="CENTER_ELLIPSIS" AnchorPane.bottomAnchor="64.0">
+      <Button fx:id="GoToLoadSavedGamesScreenButton" layoutX="106.0" layoutY="477.0" mnemonicParsing="false" onAction="#GoToLoadSavedGamesScreen" prefHeight="30.0" prefWidth="210.0" style="-fx-background-color: #292929;" text="Resume" textAlignment="CENTER" textFill="#e10808" textOverrun="CENTER_ELLIPSIS" AnchorPane.bottomAnchor="65.0">
          <font>
             <Font name="Broadway" size="32.0" />
          </font>
          <effect>
             <Glow level="0.75" />
          </effect>
+      </Button>
+      <Button fx:id="Close" contentDisplay="GRAPHIC_ONLY" layoutX="335.0" layoutY="7.0" mnemonicParsing="false" onAction="#CloseApplication" prefHeight="38.0" prefWidth="35.0" style="-fx-background-color: #262626;" text="Button">
+         <graphic>
+            <ImageView fitHeight="64.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images_/cross.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
    </children>
 </AnchorPane>

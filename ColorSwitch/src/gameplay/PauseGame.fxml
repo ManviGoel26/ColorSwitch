@@ -7,26 +7,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="570.0" prefWidth="442.0" style="-fx-background-color: #292929; -fx-border-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gameplay.PauseGameController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #292929; -fx-border-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gameplay.PauseGameController">
    <children>
-      <Button contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="117.0" layoutY="204.0" mnemonicParsing="false" prefHeight="155.0" prefWidth="216.0" style="-fx-background-color: #292929;" text="Button" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="204.0">
+      <Button fx:id="Resume" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="118.0" layoutY="275.0" mnemonicParsing="false" onAction="#ResumeGame" prefHeight="159.0" prefWidth="164.0" style="-fx-background-color: #292929;" text="Button">
          <graphic>
             <ImageView fitHeight="151.0" fitWidth="199.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@RESUME.png" />
+                  <Image url="@../../Images_/button1.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button alignment="BASELINE_RIGHT" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="57.0" style="-fx-background-color: #292929;" text="Button">
+      <Button fx:id="MenuButton" alignment="BASELINE_RIGHT" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" onAction="#GoToMenu" prefHeight="35.0" prefWidth="57.0" style="-fx-background-color: #292929;" text="Button">
          <graphic>
             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@home_sign.png" />
+                  <Image url="@../../Images_/home.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#f2e9e9" fontSmoothingType="LCD" layoutX="63.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PAUSE GAME">
+      <Text fill="#f2e9e9" fontSmoothingType="LCD" layoutX="38.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PAUSE GAME">
          <font>
             <Font name="Bookman Old Style" size="47.0" />
          </font>
